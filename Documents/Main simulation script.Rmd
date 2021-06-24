@@ -1,0 +1,12 @@
+---
+title: "Main simulation script"
+author: "Lily Andrews"
+date: "6/24/2021"
+output: html_document
+---
+
+```{r download packages}
+library(simulateGP)
+library(systemfit)
+```
+
