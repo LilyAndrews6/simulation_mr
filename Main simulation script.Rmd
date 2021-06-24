@@ -1,0 +1,30 @@
+---
+title: "Main simulation script"
+author: "Lily Andrews"
+date: "6/24/2021"
+output: html_document
+---
+
+```{r download packages}
+library(simulateGP)
+library(systemfit)
+```
+
+```{r set parameters}
+# Set causal effect of x on y
+beta_xy <- -0.3
+# Set number of instruments for x
+nsnp <- 3
+# Set number of individuals to simulate
+nid <- 10000
+# Set variance explained in x by the instruments
+rsq_gx <- 0.05
+# allele frequencies of 0.5
+af=0.5
+# effect sizes of u on x
+ux_eff <- 0.3
+# effect sizes of u on y
+uy_eff <- 0.3
+
+```
+
