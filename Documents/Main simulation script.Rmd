@@ -28,9 +28,19 @@ uy_eff <- 0.3
 
 ```
 
-```{r}
+```{r running simulation}
 source('../R/run_simulation.R')
 set.seed(639581)
 
+sim<-list()
+for (i in 1:100){
+  sim[[i]]<-run_simulation(beta_xy,nsnp,nid,rsq_gx,af,ux_eff,uy_eff)
+}
+```
+
+```{r results of simulation}
+effects<-sapply(1:100,function(x)sim[[x]]$mr$coefficients[2])
+summary(effects)
+boxplot(effects)
 ```
 
