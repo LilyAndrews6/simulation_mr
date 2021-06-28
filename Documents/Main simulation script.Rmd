@@ -28,3 +28,9 @@ uy_eff <- 0.3
 
 ```
 
+```{r}
+source('../R/run_simulation.R')
+set.seed(639581)
+
+```
+
