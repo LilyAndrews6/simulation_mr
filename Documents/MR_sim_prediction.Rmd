@@ -1,0 +1,8 @@
+---
+title: "MR simulation for prediction script"
+author: "Lily Andrews"
+date: "6/29/2021"
+output: html_document
+---
+
+
