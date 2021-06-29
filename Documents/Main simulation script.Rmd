@@ -4,7 +4,7 @@ author: "Lily Andrews"
 date: "6/24/2021"
 output: html_document
 ---
-
+Simple Mendelian Randomisation
 ```{r download packages}
 library(simulateGP)
 library(systemfit)
@@ -25,12 +25,11 @@ af=0.5
 ux_eff <- 0.3
 # effect sizes of u on y
 uy_eff <- 0.3
-
 ```
 
 ```{r running simulation}
 source('../R/run_simulation.R')
-set.seed(639581)
+set.seed(63958321)
 
 sim<-list()
 for (i in 1:100){
@@ -42,5 +41,28 @@ for (i in 1:100){
 effects<-sapply(1:100,function(x)sim[[x]]$mr$coefficients[2])
 summary(effects)
 boxplot(effects)
+```
+Simple two-sample Mendelian Randomization 
+```{r download packages}
+library(simulateGP)
+library(systemfit)
+```
+
+```{r generate summary level data from indivdual level data}
+nid <- 10000
+# Set number of instruments for x
+nsnp <- 20
+#minor allele frequency
+maf <- 0.5
+# Set variance explained in x by the instruments
+rsq_gx <- 0.05
+# Set variance in y
+rsq_gy <- 0.1
+```
+
+```{r run 2 sample MR simulation}
+source('../R/two_sample_mr_simulation.R')
+set.seed(63958321)
+two_sample_mr_simulation(nsnp,nid,rsq_gx,rsq_gy,maf)
 ```
 
