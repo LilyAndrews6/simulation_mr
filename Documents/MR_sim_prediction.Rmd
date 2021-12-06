@@ -13,25 +13,19 @@ nsnp <- 100
 af <- runif(nsnp)
 #Variance explained by x
 rsq_gx <- 0.4
-#Generate effects that corresponds to the values
-b_gx <- dplyr::tibble(af=af, snp=1:nsnp) %>%
-    generate_gwas_params(h2=rsq_gx)
-#sample effects in 1 million samples
+#Sample effects in 1 million samples
 nid_x <- 1000000
-bhat_gx <- generate_gwas_ss(b_gx, nid=nid_x)
 #x has a -0.3 effect on y
 b_xy <- -0.3
-#simulation of balanced pleiotropy
-plei_index <- sample(1:nsnp, nsnp*0.5)
-b_gy_plei <- dplyr::tibble(af=af[plei_index], snp=plei_index) %>%
-    generate_gwas_params(h2=0.02)
-#sum the genetic effects on y
-b_gy <- b_gx
-b_gy$beta <- b_gy$beta * b_xy
-b_gy$beta[plei_index] <- b_gy$beta[plei_index] + b_gy_plei$beta
-#generate summary data for g-y associations with sample size 800000
+#variance explained by all snps
+h2=0.02
+#y sample size 800000
 nid_y <- 800000
-bhat_gy <- generate_gwas_ss(b_gy, nid=nid_y)
+```
+
+```{r}
+source('../R/summary_level_data.R')
+summmary_level_data(nsnp, af, rsq_gx, nid_x, b_xy, h2, nid_y, bhat_gx, bhat_gy)
 #perform mr
 dat <- merge_exp_out(bhat_gx, bhat_gy)
 TwoSampleMR::mr(dat)

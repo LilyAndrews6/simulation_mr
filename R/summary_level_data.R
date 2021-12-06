@@ -1,4 +1,4 @@
-summmary_level_data<-function(nsnp, af, rsq_gx, nid_x, b_xy, h2, nid_y){
+summmary_level_data<-function(nsnp, af, rsq_gx, nid_x, b_xy, h2, nid_y, bhat_gx, bhat_gy){
 #Code to create summary level data
 #Generate effects that corresponds to the values
 b_gx <- dplyr::tibble(af=af, snp=1:nsnp) %>%
