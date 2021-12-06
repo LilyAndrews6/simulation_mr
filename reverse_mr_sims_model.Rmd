@@ -1,0 +1,38 @@
+---
+title: "reverse_mr_sims_model"
+author: "Lily Andrews"
+date: "12/6/2021"
+output: html_document
+---
+Model:
+forward mr
+       u
+     |    |
+     v    v
+g -> x -> y  
+genetic liability
+         -> x  <- 
+g -> gl           u
+         -> y  <- 
+reverse mr
+       u
+     |    |
+     v    v
+g -> y -> x
+
+Strategy:   
+sample 1: Do GWAS to identify causal variants for y based on heritability and sample size
+- we know how many hits there are for glioma, and their effects, variance explained
+- we know heritability of glioma
+
+sample 2: Reverse MR of discovered genetic variants for y against x with sample sizes for x based on available data
+- mr association
+  - fraction of liability in y discovered, correlated with x
+  - sample size
+
+sample 3: Individual level data where x and y are both measured - obs association
+- correlation between x and y will be due to 
+  - total liability of y associating with x
+  - total liability of y associating with y
+  - confounding effect
+  - sample size
